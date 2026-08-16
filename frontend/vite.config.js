@@ -23,4 +23,8 @@ export default defineConfig({
     chunkSizeWarningLimit: 600,
     sourcemap: false,
   },
+  // ⚡️ ADD THIS PREVIEW BLOCK HERE TO FIX THE VITE HOST BLOCK ERROR:
+  preview: {
+    allowedHosts: ["noble-enchantment-production-c3cb.up.railway.app"],
+  },
 });
