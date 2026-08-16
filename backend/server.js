@@ -23,21 +23,29 @@ app.use(helmet());
 app.use(compression());
 
 // CORS - restrict to the deployed frontend origin(s)
-const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173")
-  .split(",")
-  .map((o) => o.trim());
+// CORS - restrict to the deployed frontend origin(s)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://railway.app"
+];
+
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      
+      // Check if origin matches allowed list or matches your main subdomains
+      if (allowedOrigins.includes(origin) || origin.includes("noble-enchantment-production-c3cb.up.railway.app")) {
+        return callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        return callback(new Error("Not allowed by CORS"));
       }
     },
     credentials: true,
   })
 );
+
 
 app.use(express.json({ limit: "1mb" }));
 app.use(mongoSanitize());
