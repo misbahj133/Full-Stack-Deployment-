@@ -1,6 +1,6 @@
 # Fieldnotes - Full-Stack MERN Blogging Platform
 
-👉 [Live Web Application Link](https://fieldnotes-production.up.railway.app)
+👉 [Live Web Application Link](https://1drv.ms/v/c/2e984d4e15a497f7/IQBC0iTjwiETSZye9Y3XivDWARfVkrENWGhhBWyNXXIxEyA?e=5RlR8j)
 
 ## 🏗️ Architecture Overview
 This application is designed as a decoupled, full-stack microservices architecture hosted on cloud servers:
